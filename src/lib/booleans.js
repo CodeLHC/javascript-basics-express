@@ -76,7 +76,7 @@ function startsWith(char, string) {
 function containsVowels(string) {
   const vowels = 'aeiou';
   const lowerCaseString = string.toLowerCase();
-  for (let i = 0; i < vowels.length; i++) {
+  for (let i = 0; i < vowels.length; i + 1) {
     if (lowerCaseString.includes(vowels[i])) {
       return true;
     }
