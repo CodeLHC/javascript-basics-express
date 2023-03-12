@@ -29,12 +29,10 @@ const removeNthElement = (index, array) => {
 };
 
 const numbersToStrings = numbers => {
-  const newString = numbers.toString();
-  return newString.split(',');
+  return numbers.toString().split(',');
 };
 
 const uppercaseWordsInArray = strings => {
-  // return strings.toString().toUpperCase().split(",");
   return strings.map(string => {
     return string.toUpperCase();
   });
@@ -64,9 +62,7 @@ const removeNthElement2 = (index, array) => {
 const elementsStartingWithAVowel = strings => {
   return strings.filter(string => {
     const vowels = 'aeiou';
-    const lowerCaseString = string.toLowerCase();
-    const firstLetter = lowerCaseString[0];
-    return vowels.includes(firstLetter);
+    return vowels.includes(string.toLowerCase()[0]);
   });
 };
 
