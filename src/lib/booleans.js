@@ -4,7 +4,7 @@ function negate(a) {
     return false;
   }
   return true;
-};
+}
 
 function both(a, b) {
   if (a && b === true) {
@@ -14,103 +14,82 @@ function both(a, b) {
 }
 
 function either(a, b) {
-  if (a || b === true) {
-    return true;
-  }
-  return false;
-};
+  return a || b;
+}
 
 function none(a, b) {
-  if (a === false && b === false){
-    return true;
-  }
-  return false;
-};
+  return !(a || b);
+}
 
 function one(a, b) {
-  if (a === true && b === false) {
-    return true;
-  }
-  if (a === false && b === true) {
-    return true;
-  }
-  return false;
-};
+  return (a || b) && !(a && b);
+}
 
 function truthiness(a) {
-  if (a) {
-    return true;
-  }
-  return false;
-};
+  return !!a;
+  // condensed using two NOT operators (!!) together to create a double negation. First evaluates the value to a boolean that will be the opposite of what it actually is, eg passing in a string (which is a truthy value) will be made false by one of the ! operators, then the second ! will flip that to true, and so evaluating the string as being truthy.
+}
 
 function isEqual(a, b) {
   if (a === b) {
     return true;
   }
   return false;
-};
+}
 
 function isGreaterThan(a, b) {
-  if (a > b){
-    return true;
-  }
-  return false;
-};
+  return a > b;
+}
 
 function isLessThanOrEqualTo(a, b) {
-  if (a <= b){
-    return true;
-  }
-  return false;
-};
+  return a <= b;
+}
 
 function isOdd(a) {
-  if (a % 2 === 0){
+  if (a % 2 === 0) {
     return false;
   }
   return true;
-};
+}
 
 function isEven(a) {
-  if (a % 2 === 0){
+  if (a % 2 === 0) {
     return true;
   }
   return false;
-};
+}
 
 function isSquare(a) {
-  if (Math.sqrt(a) % 1 === 0){
+  if (Math.sqrt(a) % 1 === 0) {
     return true;
   }
   return false;
-};
+}
 
 function startsWith(char, string) {
-  if (string.startsWith(char)){
+  if (string.startsWith(char)) {
     return true;
   }
   return false;
-};
+}
 
 function containsVowels(string) {
   const vowels = 'aeiou';
-const lowerCaseString = string.toLowerCase();
-  for (let i=0; i < vowels.length; i++) {
+  const lowerCaseString = string.toLowerCase();
+  for (let i = 0; i < vowels.length; i++) {
     if (lowerCaseString.includes(vowels[i])) {
       return true;
     }
   }
   return false;
-};
+}
 
 function isLowerCase(string) {
-  // your code here
-  if (string === string.toLowerCase()){
+  if (string === string.toLowerCase()) {
     return true;
   }
   return false;
-};
+}
 
 module.exports = {
   negate,
@@ -127,5 +106,5 @@ module.exports = {
   isSquare,
   startsWith,
   containsVowels,
-  isLowerCase
+  isLowerCase,
 };

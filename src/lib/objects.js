@@ -29,7 +29,6 @@ const getAges = people => {
 };
 
 const findByName = (name, people) => {
-  // your code here
   return people.find(person => {
     return person.name === name;
   });
