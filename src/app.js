@@ -1,5 +1,4 @@
 const express = require('express');
-// const bodyParser = require('body-parser');
 
 const strings = require('./lib/strings');
 const numbers = require('./lib/numbers');
@@ -11,10 +10,9 @@ const app = express();
 app.use(express.json());
 
 // STRINGS //
-app.get('/strings/hello/:thing', (req, res) => {
-  const { thing } = req.params;
+app.get('/strings/hello/:string', (req, res) => {
   res.status(200);
-  res.send({ result: strings.sayHello(thing) });
+  res.send({ result: strings.sayHello(req.params.string) });
 });
 
 app.get('/strings/upper/hello', (req, res) => {
@@ -78,14 +76,12 @@ app.post('/numbers/multiply', (req, res) => {
 // BOOLEANS //
 app.post('/booleans/negate', (req, res) => {
   res.status(200);
-  const { value } = req.body;
-  res.send({ result: booleans.negate(value) });
+  res.send({ result: booleans.negate(req.body.value) });
 });
 
 app.post('/booleans/truthiness', (req, res) => {
   res.status(200);
-  const { value } = req.body;
-  res.send({ result: booleans.truthiness(value) });
+  res.send({ result: booleans.truthiness(req.body.value) });
 });
 
 app.get('/booleans/is-odd/:number', (req, res) => {
@@ -113,16 +109,12 @@ app.get('/booleans/:string/starts-with/:char', (req, res) => {
 
 app.post('/arrays/element-at-index/:index', (req, res) => {
   res.status(200);
-  const { index } = req.params;
-  const { array } = req.body;
-  // const { index } = req.body;
-  res.send({ result: arrays.getNthElement(index, array) });
+  res.send({ result: arrays.getNthElement(req.params.index, req.body.array) });
 });
 
 app.post('/arrays/to-string', (req, res) => {
   res.status(200);
-  const { array } = req.body;
-  res.send({ result: arrays.arrayToCSVString(array) });
+  res.send({ result: arrays.arrayToCSVString(req.body.array) });
 });
 
 app.post('/arrays/append', (req, res) => {
@@ -133,8 +125,7 @@ app.post('/arrays/append', (req, res) => {
 
 app.post('/arrays/starts-with-vowel', (req, res) => {
   res.status(200);
-  const { array } = req.body;
-  res.send({ result: arrays.elementsStartingWithAVowel(array) });
+  res.send({ result: arrays.elementsStartingWithAVowel(req.body.array) });
 });
 
 app.post('/arrays/remove-element', (req, res) => {
